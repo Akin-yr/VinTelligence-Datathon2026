@@ -66,7 +66,7 @@ Sau đó, trên thanh công cụ:
 
 ---
 
-## 🛠️ My Technical Contributions (Ra Lan Đỗ Tú Trinh)
+## 🛠️ Đóng góp cá nhân (Ra Lan Đỗ Tú Trinh)
 
 [cite_start]Trong dự án này, mình chịu trách nhiệm chính về thiết kế kiến trúc mô hình và xây dựng pipeline dự báo doanh thu (Phần 3 của báo cáo)[cite: 86]. Các đóng góp cụ thể bao gồm:
 
