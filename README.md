@@ -68,7 +68,7 @@ Sau đó, trên thanh công cụ:
 
 ## 🛠️ Đóng góp cá nhân (Ra Lan Đỗ Tú Trinh)
 
-Trong dự án này, mình chịu trách nhiệm chính về thiết kế kiến trúc mô hình và xây dựng pipeline dự báo doanh thu (Phần 3 của báo cáo). Các đóng góp cụ thể bao gồm:
+Ở hạng mục dự báo, mình tham gia với vai trò Co-developer. Với phương thức làm việc cuốn chiếu và liên tục tối ưu hóa dựa trên giải pháp của đồng đội, mình đã trực tiếp đảm nhiệm các phần trọng tâm sau:
 
 ### 1. Robust Forecasting Pipeline Design
 * Thiết kế quy trình huấn luyện theo nguyên tắc **Zero-Leakage**, sử dụng lag $> 549$ ngày để ngăn chặn việc rò rỉ thông tin tương lai.
@@ -92,7 +92,7 @@ Thiết kế hệ thống Ensemble kết hợp 4 thành phần để tối ưu h
 * **XAI (SHAP):** Sử dụng **SHAP Summary Plot** để minh bạch hóa tác động của 30 đặc trưng quan trọng nhất (như `Revenue_lag_730_med` và `tet_proximity`), chuyển đổi từ "hộp đen AI" sang insights kinh doanh.
 * **Business Constraints:** Cài đặt các ràng buộc hậu xử lý thực tế như hệ số hiệu chỉnh tăng trưởng 1.14x và điều kiện tài chính $COGS \le 0.99 \times Revenue$.
 
-**Kết quả:** Giải pháp đạt độ chính xác cao với $R^2 \approx 0.79$, đảm bảo tính ổn định và khả năng ứng dụng thực tế.
+**Kết quả:** Giải pháp đạt độ chính xác $R^2 \approx 0.79$, đảm bảo tính ổn định và khả năng ứng dụng thực tế.
 
 ---
 
