@@ -68,31 +68,31 @@ Sau đó, trên thanh công cụ:
 
 ## 🛠️ Đóng góp cá nhân (Ra Lan Đỗ Tú Trinh)
 
-[cite_start]Trong dự án này, mình chịu trách nhiệm chính về thiết kế kiến trúc mô hình và xây dựng pipeline dự báo doanh thu (Phần 3 của báo cáo)[cite: 86]. Các đóng góp cụ thể bao gồm:
+Trong dự án này, mình chịu trách nhiệm chính về thiết kế kiến trúc mô hình và xây dựng pipeline dự báo doanh thu (Phần 3 của báo cáo). Các đóng góp cụ thể bao gồm:
 
 ### 1. Robust Forecasting Pipeline Design
-* [cite_start]Thiết kế quy trình huấn luyện theo nguyên tắc **Zero-Leakage**, sử dụng lag $> 549$ ngày để ngăn chặn việc rò rỉ thông tin tương lai[cite: 88].
-* [cite_start]Triển khai phương pháp **Walk-forward Validation** (điểm cắt 2022-01-01) để đánh giá mô hình một cách khách quan theo dòng thời gian[cite: 89].
-* [cite_start]Áp dụng **Recency Weighting** để ưu tiên dữ liệu gần đây mà vẫn bảo toàn giá trị từ dữ liệu lịch sử xa[cite: 90].
+* Thiết kế quy trình huấn luyện theo nguyên tắc **Zero-Leakage**, sử dụng lag $> 549$ ngày để ngăn chặn việc rò rỉ thông tin tương lai.
+* Triển khai phương pháp **Walk-forward Validation** (điểm cắt 2022-01-01) để đánh giá mô hình một cách khách quan theo dòng thời gian.
+* Áp dụng **Recency Weighting** để ưu tiên dữ liệu gần đây mà vẫn bảo toàn giá trị từ dữ liệu lịch sử xa.
 
 ### 2. Advanced Feature Engineering
-[cite_start]Xây dựng hệ thống đặc trưng đa tầng giúp mô hình học được các quy luật phức tạp[cite: 91]:
-* [cite_start]**Cyclic Encoding:** Mã hóa các yếu tố thời gian (tháng, tuần, ngày)[cite: 91].
-* [cite_start]**Event-driven Features:** Thiết kế các biến tiệm cận Tết (tet_proximity) và các ngày lễ E-commerce (11/11, 12/12)[cite: 92].
-* [cite_start]**Interaction Features:** Tạo các biến tương tác như `promo_x_sessions` để bắt kịp các điểm bùng nổ doanh thu khi có sự kết hợp giữa khuyến mãi và lưu lượng truy cập lớn[cite: 96, 112].
+Xây dựng hệ thống đặc trưng đa tầng giúp mô hình học được các quy luật phức tạp:
+* **Cyclic Encoding:** Mã hóa các yếu tố thời gian (tháng, tuần, ngày).
+* **Event-driven Features:** Thiết kế các biến tiệm cận Tết (tet_proximity) và các ngày lễ E-commerce (11/11, 12/12).
+* **Interaction Features:** Tạo các biến tương tác như `promo_x_sessions` để bắt kịp các điểm bùng nổ doanh thu khi có sự kết hợp giữa khuyến mãi và lưu lượng truy cập lớn.
 
 ### 3. Hybrid Ensemble Strategy
-[cite_start]Thiết kế hệ thống Ensemble kết hợp 4 thành phần để tối ưu hóa sai số[cite: 98, 100]:
-* [cite_start]**LightGBM (L1 & Tweedie):** Anchor chính để xử lý outlier và phân phối dữ liệu lệch phải[cite: 100].
-* [cite_start]**XGBoost (MAE):** Tăng tính đa dạng (diversity) cho ensemble[cite: 100].
-* [cite_start]**Prophet + LGB Residual:** Bắt các yếu tố mùa vụ có cấu trúc và bù đắp sai số bằng gradient boosting[cite: 100].
-* [cite_start]**Optimization:** Sử dụng thuật toán **Nelder-Mead** để tìm trọng số tối ưu giúp tối thiểu hóa MAE trên tập validation[cite: 102].
+Thiết kế hệ thống Ensemble kết hợp 4 thành phần để tối ưu hóa sai số:
+* **LightGBM (L1 & Tweedie):** Anchor chính để xử lý outlier và phân phối dữ liệu lệch phải.
+* **XGBoost (MAE):** Tăng tính đa dạng (diversity) cho ensemble.
+* **Prophet + LGB Residual:** Bắt các yếu tố mùa vụ có cấu trúc và bù đắp sai số bằng gradient boosting.
+* **Optimization:** Sử dụng thuật toán **Nelder-Mead** để tìm trọng số tối ưu giúp tối thiểu hóa MAE trên tập validation.
 
 ### 4. Model Explainability & Post-processing
-* [cite_start]**XAI (SHAP):** Sử dụng **SHAP Summary Plot** để minh bạch hóa tác động của 30 đặc trưng quan trọng nhất (như `Revenue_lag_730_med` và `tet_proximity`), chuyển đổi từ "hộp đen AI" sang insights kinh doanh[cite: 108, 109, 119].
-* [cite_start]**Business Constraints:** Cài đặt các ràng buộc hậu xử lý thực tế như hệ số hiệu chỉnh tăng trưởng 1.14x và điều kiện tài chính $COGS \le 0.99 \times Revenue$[cite: 106, 107].
+* **XAI (SHAP):** Sử dụng **SHAP Summary Plot** để minh bạch hóa tác động của 30 đặc trưng quan trọng nhất (như `Revenue_lag_730_med` và `tet_proximity`), chuyển đổi từ "hộp đen AI" sang insights kinh doanh.
+* **Business Constraints:** Cài đặt các ràng buộc hậu xử lý thực tế như hệ số hiệu chỉnh tăng trưởng 1.14x và điều kiện tài chính $COGS \le 0.99 \times Revenue$.
 
-[cite_start]**Kết quả:** Giải pháp đạt độ chính xác cao với $R^2 \approx 0.79$, đảm bảo tính ổn định và khả năng ứng dụng thực tế[cite: 114, 115].
+**Kết quả:** Giải pháp đạt độ chính xác cao với $R^2 \approx 0.79$, đảm bảo tính ổn định và khả năng ứng dụng thực tế.
 
 ---
 
